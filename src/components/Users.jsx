@@ -95,9 +95,12 @@ const users = [
 
 export default function Users() {
   useGSAP(() => {
-    Draggable.create(".user-card", {
-      bounds: ".users-inner",
-      inertia: true,
+    const mm = gsap.matchMedia();
+    mm.add("(min-width:1024px)", () => {
+      Draggable.create(".user-card", {
+        bounds: ".users-inner",
+        inertia: true,
+      });
     });
 
     const usersTimeline = gsap.timeline();
