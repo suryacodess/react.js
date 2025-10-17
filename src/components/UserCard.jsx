@@ -24,7 +24,7 @@ export default function UserCard({ img, title, text}) {
           </div>
           <div className="user-card-body-top-text">
             <p className="text-[14px] text-gray-400 font-normal">
-              {text.slice(0, 80)}
+              {text && text.slice(0, 80)}
             </p>
           </div>
         </div>
