@@ -1,6 +1,8 @@
 import { useGSAP } from "@gsap/react";
-import UserCard from "./UserCard";
+import { Draggable, InertiaPlugin } from "gsap/all";
 import gsap from "gsap";
+gsap.registerPlugin(Draggable, InertiaPlugin);
+import UserCard from "./UserCard";
 const users = [
   {
     id: 1,
@@ -93,7 +95,13 @@ const users = [
 
 export default function Users() {
   useGSAP(() => {
+    Draggable.create(".user-card", {
+      bounds: ".users-inner",
+      inertia: true,
+    });
+
     const usersTimeline = gsap.timeline();
+
     usersTimeline.fromTo(
       ".user-card",
       {
@@ -107,7 +115,7 @@ export default function Users() {
   });
   return (
     <section className="users py-10 bg-gray-200 min-h-screen px-4">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="users-inner max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {users.map((item, index) => {
           return <UserCard {...item} key={index} />;
         })}
