@@ -1,6 +1,9 @@
+import Header from "./components/Header";
 import "./App.css";
 const App = () => {
-  return <h1 className="text-2xl"> App</h1>;
+  return <div className="app">
+    <Header />
+  </div>;
 };
 
 export default App;
