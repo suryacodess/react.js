@@ -39,4 +39,5 @@ I created this repository to:
 A React cards component project using functional components, props, GSAP animations,
 and React Icons to create smooth, animated card layouts.
 link - https://blankpink.netlify.app/
+link - https://arcaine.netlify.app/
 
