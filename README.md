@@ -41,3 +41,7 @@ and React Icons to create smooth, animated card layouts.
 - link - https://blankpink.netlify.app/
 - link - https://arcaine.netlify.app/
 
+2. useState hook
+A simple crud operations with useState hook
+- link - https://createplans.netlify.app/
+
