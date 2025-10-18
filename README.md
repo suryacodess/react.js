@@ -35,8 +35,9 @@ I created this repository to:
 - Tailwind CSS
 
 ## 🧩 Projects
-1. Blankpink - JSX, Functional components, Props
+1. JSX, Functional components, Props
 A React cards component project using functional components, props, GSAP animations,
 and React Icons to create smooth, animated card layouts.
-link - https://blankpink.netlify.app/
+- link - https://blankpink.netlify.app/
+- link - https://arcaine.netlify.app/
 
