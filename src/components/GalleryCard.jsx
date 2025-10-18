@@ -1,7 +1,7 @@
 import { IoIosCheckmark, IoMdAdd } from "react-icons/io";
 import { FcLike } from "react-icons/fc";
 import { FcMms } from "react-icons/fc";
-export default function GalleryCard({ download_url, author }) {
+export default function GalleryCard({ id, download_url, author }) {
   let likes = Math.floor(Math.random() * (900 - 200 + 1)) + 400;
   let comments = Math.floor(Math.random() * (900 - 200 + 1)) + 100;
   return (
@@ -9,8 +9,9 @@ export default function GalleryCard({ download_url, author }) {
       <div className="gallery-card-img aspect-square w-full rounded-4xl overflow-hidden">
         <img
           className="w-full h-full object-cover object-top"
-          src={download_url}
+          src={`https://picsum.photos/id/${id}/400/300`}
           alt={author}
+          loading="lazy"
         />
       </div>
       <div className="gallery-card-body px-4 py-4 flex flex-col justify-between min-h-[177px] gap-2 poppins">

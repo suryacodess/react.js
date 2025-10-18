@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import GalleryCard from "./GalleryCard";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 export default function Gallery(props) {
   const [data, setData] = useState([]);
@@ -25,6 +24,20 @@ export default function Gallery(props) {
     getData();
   }, [page]);
 
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(
+      ".gallery-item .gallery-card img",
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        stagger: 0.2,
+      }
+    );
+  }, [data, page]);
+
   const pages = (str) => {
     if (str === "prev") {
       if (page > 1) setPage((prev) => prev - 1);
@@ -37,18 +50,25 @@ export default function Gallery(props) {
 
   return (
     <div className="gallery w-full py-10 bg-gray-200 min-h-dvh">
-      <div className="flex justify-end items-center max-w-[1200px] mx-auto pb-5 px-2">
+      <div className="flex justify-end items-center max-w-[1200px] mx-auto pb-5 px-3">
         <div className="">Your at page:{page}</div>
       </div>
-      <div className="gallery-inner max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {data.map((item) => {
-          return (
-            <div className="gallery-item" key={item.id}>
-              <GalleryCard {...item} />
-            </div>
-          );
-        })}
-      </div>
+      {data.length > 0 ? (
+        <div className="gallery-inner max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {data.map((item) => {
+            return (
+              <div className="gallery-item" key={item.id}>
+                <GalleryCard {...item} />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center">
+          <h1 className="text-4xl font-bold">Loading...</h1>
+        </div>
+      )}
+
       {data.length > 0 ? (
         <div className="text-center py-5 gallery-item flex gap-2 justify-center">
           <button
