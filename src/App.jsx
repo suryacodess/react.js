@@ -1,15 +1,23 @@
-import Header from "./components/Header";
-import Cards from "./components/Cards";
 import "./App.css";
-import Input from "./components/Input";
-import Hooks from "./components/Hooks";
+import Gallery from "./components/Gallery";
+import gsap from "gsap";
+import { ScrollSmoother, ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 const App = () => {
-  return <div className="app">
-    <Header />
-    <Input />
-    <Hooks />
-    <Cards />
-  </div>;
+  const scc = ScrollSmoother.create({
+    smooth: 1,
+    effects: true,
+    smoothTouch: 0.1,
+  });
+  return (
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <div className="app">
+          <Gallery sc={scc} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default App;
