@@ -94,6 +94,18 @@ export default function Hooks() {
     getData();
   }, []);
 
+  // useEffect(() => {
+  //   console.log("runs everytime on rerender");
+  // });
+
+  // useEffect(() => {
+  //   console.log("runs only on first render");
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log("runs whenever the state is updated");
+  // }, [dataCount]);
+
   return (
     <div className="hooks max-w-[1200px] mx-auto px-2 pt-10">
       <h1 className="text-4xl font-bold poppins">Hooks</h1>
