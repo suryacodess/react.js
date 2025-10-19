@@ -1,8 +1,21 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Header() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  const toggleTheme = () => {
+    theme == "" ? setTheme("black") : setTheme("");
+  };
+  console.log(theme);
   return (
-    <header className="header w-full">
+    <header
+      className={`header w-full `}
+      style={{
+        backgroundColor: theme ? theme : "white",
+        color: theme ? "white" : theme,
+      }}
+    >
       <div className="header-inner max-w-[1200px] w-full mx-auto flex justify-between items-center p-2">
         <div className="header-logo">
           <h2 className="text-2xl font-extrabold">Header</h2>
@@ -21,6 +34,11 @@ export default function Header() {
             })}
           </div>
         </nav>
+        <div className="">
+          <button className="cursor-pointer" onClick={() => toggleTheme()}>
+            dark theme
+          </button>
+        </div>
       </div>
     </header>
   );
