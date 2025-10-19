@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header className="header w-full">
@@ -7,10 +9,13 @@ export default function Header() {
         </div>
         <nav className="header-nav">
           <div className="header-nav-list flex gap-4 justify-center items-center">
-            {["Home", "About", "Contact"].map((item, index) => {
+            <div className="header-nav-list-item">
+              <Link to="/">Home</Link>
+            </div>
+            {["About", "Contact"].map((item, index) => {
               return (
                 <div className="header-nav-list-item" key={index}>
-                  {item}
+                  <Link to={`/${item.toLowerCase()}`}>{item}</Link>
                 </div>
               );
             })}
