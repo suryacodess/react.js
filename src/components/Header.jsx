@@ -12,7 +12,7 @@ export default function Header() {
             <div className="header-nav-list-item">
               <Link to="/">Home</Link>
             </div>
-            {["About", "Contact"].map((item, index) => {
+            {["About", "Contact", "Careers"].map((item, index) => {
               return (
                 <div className="header-nav-list-item" key={index}>
                   <Link to={`/${item.toLowerCase()}`}>{item}</Link>
