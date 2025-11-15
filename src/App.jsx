@@ -1,22 +1,17 @@
 import "./App.css";
+import Filters from "./components/Filters";
+import Header from "./components/Header";
 import Users from "./components/Users";
-import gsap from "gsap";
-import { ScrollTrigger, ScrollSmoother } from "gsap/all";
-gsap.registerPlugin(ScrollTrigger,ScrollSmoother);
+
+import { AppProvider } from "./context/Context";
 const App = () => {
-  ScrollSmoother.create({
-    smooth: 1,
-    effects: true,
-    smoothTouch: 0.1,
-  });
   return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
-        <div className="app">
-          <Users />
-        </div>
+    <AppProvider>
+      <div className="app">
+        <Filters />
+        <Users />
       </div>
-    </div>
+    </AppProvider>
   );
 };
 
