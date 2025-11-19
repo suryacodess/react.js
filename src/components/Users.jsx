@@ -7,9 +7,14 @@ import gsap from "gsap";
 import { useEffect, useState } from "react";
 gsap.registerPlugin(Draggable, InertiaPlugin);
 export default function Users() {
-  const { searchInput } = useAppContext();
+  const {
+    searchInput,
+    selectedCharacterFilterFromDropdown,
+  } = useAppContext();
   let allUsers = [...arcane, ...blankpink];
   const [searchFilteredUsers, setSearchFilteredUsers] = useState(blankpink);
+
+  console.log("selectedCharacterFilterFromDropdown in users.jsx", selectedCharacterFilterFromDropdown)
 
   // onload animation
   useGSAP(() => {
