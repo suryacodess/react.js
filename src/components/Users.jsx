@@ -7,14 +7,9 @@ import gsap from "gsap";
 import { useEffect, useState } from "react";
 gsap.registerPlugin(Draggable, InertiaPlugin);
 export default function Users() {
-  const {
-    searchInput,
-    selectedCharacterFilterFromDropdown,
-  } = useAppContext();
+  const { searchInput, selectedCharacterFilterFromDropdown } = useAppContext();
   let allUsers = [...arcane, ...blankpink];
   const [searchFilteredUsers, setSearchFilteredUsers] = useState(blankpink);
-
-  console.log("selectedCharacterFilterFromDropdown in users.jsx", selectedCharacterFilterFromDropdown)
 
   // onload animation
   useGSAP(() => {
@@ -40,13 +35,21 @@ export default function Users() {
     );
   });
 
-  // search filtering
   useEffect(() => {
-    const filteredUsers = allUsers.filter((item) => {
-      return item.title.toLowerCase().includes(searchInput.toLowerCase());
-    });
+    let filteredUsers = allUsers;
+    if (searchInput.trim() !== "") {
+      filteredUsers = filteredUsers.filter((item) =>
+        item.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+    }
+    if (selectedCharacterFilterFromDropdown !== "all") {
+      filteredUsers = filteredUsers.filter(
+        (item) =>
+          item.category.toLowerCase() === selectedCharacterFilterFromDropdown
+      );
+    }
     setSearchFilteredUsers(filteredUsers);
-  }, [searchInput]);
+  }, [searchInput, selectedCharacterFilterFromDropdown]);
 
   return (
     <section

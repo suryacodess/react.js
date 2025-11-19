@@ -6,7 +6,7 @@ export const AppProvider = ({ children }) => {
   const [
     selectedCharacterFilterFromDropdown,
     setSelectedCharacterFilterFromDropdown,
-  ] = useState("");
+  ] = useState("all");
   const value = {
     searchInput,
     setSearchInput,
